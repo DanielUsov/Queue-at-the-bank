@@ -1,0 +1,7 @@
+export enum ClientIssueType {
+  NEW_CLIENT = 'NEW_CLIENT',
+  TECHNICAL = 'TECHNICAL',
+  CREDIT = 'CREDIT',
+  PENSION = 'PENSION',
+  INVESTMENTS = 'INVESTMENTS'
+}

@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev:manual": "PROJECT_STATUS=development ts-node .",
+    "dev": "PROJECT_STATUS=development nodemon",
+    "build": "PROJECT_STATUS=production tsc -p tsconfig.json",
+    "prod": "PROJECT_STATUS=production node dist/src/index",
+    "test": "PROJECT_STATUS=test jest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write 'src/**/*.{ts,json}' --config .prettierrc",
+    "db:start": "docker compose up --build queue-db -d",
+    "db:stop": "docker compose down --remove-orphans -v queue-db",
+    "seeds": "npx prisma db push && npx prisma db seed",
+    "reseeds": "npm run db:stop && npm run db:start && sleep 2 && npm run seeds",
+    "deploy:start": "npm run build && docker compose up --build",
+    "deploy:stop": "docker compose down --remove-orphans -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fastify/autoload": "^6.3.1",
+    "@typegoose/typegoose": "^12.20.0",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.2",
+    "fastify-plugin": "^5.1.0",
+    "mongoose": "^8.19.4",
+    "nodemon": "^3.1.11",
+    "pino-pretty": "^13.1.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0"
+  }
+}
