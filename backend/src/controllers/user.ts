@@ -1,40 +1,7 @@
-import 'dotenv/config';
-import { FastifyInstance } from 'fastify';
-import UserModel from '../models/user';
+// import { FastifyInstance } from 'fastify/types/instance';
 
-const getAll = async (fastify: FastifyInstance): Promise<any> => {
-  return await UserModel.getAll(fastify);
-};
-
-// const getById = async (fastify: FastifyInstance, id: string): Promise<TUser> => {
-//   return await UserRepository.getById(fastify, id);
-// };
-
-// const create = async (
-//   fastify: FastifyInstance,
-//   data: Omit<TUser, 'id'>
-// ): Promise<TUser> => {
-//   return await UserRepository.create(fastify, {
-//     ...data,
-//     password: await bcrypt.hash(
-//       data.password,
-//       Number(process.env.USER_PASSWORD_SALT_ROUNDS!)
-//     ),
+// export default async (fastify: FastifyInstance): Promise<void> => {
+//   fastify.get('/', async (req, rep) => {
+//     rep.code(200).send(await UserService.getAll(fastify));
 //   });
 // };
-
-// const update = async (
-//   fastify: FastifyInstance,
-//   id: string,
-//   updatedData: Omit<TUser, 'id'>
-// ): Promise<TUser> => {
-//   return await UserRepository.update(fastify, id, updatedData);
-// };
-
-// const remove = async (fastify: FastifyInstance, id: string): Promise<TUser> => {
-//   return await UserRepository.remove(fastify, id);
-// };
-
-export default {
-  getAll,
-};

@@ -5,18 +5,18 @@ import { join } from 'path';
 import loggerConfig from '../configs/log';
 
 const fastify = Fastify({
-  logger: loggerConfig[process.env.PROJECT_STATUS] ?? true,
+  logger: loggerConfig[process.env.PROJECT_STATUS] ?? true
 });
 
-// fastify.register(autoLoad, {
-//   dir: join(__dirname, 'plugins'),
-// });
+fastify.register(autoLoad, {
+  dir: join(__dirname, 'plugins')
+});
 
 fastify.register(autoLoad, {
   dir: join(__dirname, 'routers'),
   options: {
-    prefix: '/api/v1',
-  },
+    prefix: '/api/v1'
+  }
 });
 
 fastify.setErrorHandler((error, request, res) => {
@@ -27,7 +27,7 @@ fastify.setErrorHandler((error, request, res) => {
 fastify.listen(
   {
     port: Number(process.env.SERVER_PORT) || 3002,
-    host: process.env.PROJECT_STATUS === 'production' ? '0.0.0.0' : 'localhost',
+    host: process.env.PROJECT_STATUS === 'production' ? '0.0.0.0' : 'localhost'
   },
   (err, address) => {
     if (err) {
