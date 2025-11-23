@@ -4,12 +4,16 @@ import { ClientIssueType } from '../enums/questions';
 
 @modelOptions({
   schemaOptions: {
+    _id: true,
     collection: 'visitors',
     timestamps: { createdAt: true, updatedAt: false }
   }
 })
 export class VisitorSchema {
-  @prop({ required: true, unique: true })
+  @prop({
+    required: true,
+    unique: true
+  })
   public label!: string;
 
   @prop({ required: true, enum: ClientIssueType })

@@ -9,11 +9,11 @@ const fastify = Fastify({
 });
 
 fastify.register(autoLoad, {
-  dir: join(__dirname, 'plugins')
+  dir: join(__dirname, 'plugins'),
 });
 
 fastify.register(autoLoad, {
-  dir: join(__dirname, 'routers'),
+  dir: join(__dirname, 'controllers'),
   options: {
     prefix: '/api/v1'
   }

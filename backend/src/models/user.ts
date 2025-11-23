@@ -3,7 +3,11 @@ import { ClientIssueType } from '../enums/questions';
 import { RoleList } from '../enums/roles';
 
 @modelOptions({
-  schemaOptions: { collection: 'users', timestamps: true }
+  schemaOptions: {
+    _id: true,
+    collection: 'users',
+    timestamps: true
+  }
 })
 export class UserSchema {
   @prop({ required: true })
@@ -19,4 +23,4 @@ export class UserSchema {
   public role!: RoleList;
 }
 
-export const ManagerModel = getModelForClass(UserSchema);
+export const UserModel = getModelForClass(UserSchema);

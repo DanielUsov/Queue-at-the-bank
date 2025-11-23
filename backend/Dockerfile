@@ -1,4 +1,4 @@
-FROM node:18.18.0
+FROM node:22.3.0
 
 WORKDIR /usr/src/app/
 RUN mkdir -p dist
@@ -7,8 +7,8 @@ COPY ./dist ./dist/
 COPY .env ./
 COPY package*.json ./
 
-RUN npm i 
+RUN npm ci 
 
 EXPOSE 3002
 
-CMD ["sh", "-c", "npm run seeds && npm run prod"]
+CMD ["sh", "-c", "npm run prod"]
